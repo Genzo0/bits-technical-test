@@ -1,5 +1,5 @@
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
-import { Ellipsis } from "lucide-react";
+import { Divide, Ellipsis, Plus } from "lucide-react";
 
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
@@ -13,6 +13,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import LogoutButton from "@/components/LogoutButton";
+import { Suspense } from "react";
+import Notes from "@/components/Notes";
 
 async function getChecklist() {
   const cookieStore = cookies();
@@ -38,11 +40,11 @@ async function getChecklist() {
 }
 
 export default async function Page() {
-  const checklist = await getChecklist();
-
+  const data = await getChecklist();
   return (
     <MaxWidthWrapper className="space-y-6 py-16">
-      <div className="flex items-center justify-end">
+      <div className="flex items-center justify-between">
+        <h1 className="text-3xl font-bold">Google Keep Clone</h1>
         <DropdownMenu>
           <DropdownMenuTrigger>
             <Ellipsis className="size-5" />
@@ -56,6 +58,10 @@ export default async function Page() {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
+
+      <Suspense fallback={<div>Loading...</div>}>
+        <Notes />
+      </Suspense>
     </MaxWidthWrapper>
   );
 }

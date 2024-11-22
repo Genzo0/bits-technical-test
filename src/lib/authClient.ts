@@ -6,3 +6,7 @@ export function logout() {
   });
   window.location.reload();
 }
+
+export function getCookies() {
+  return Cookies.get("authToken");
+}
