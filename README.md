@@ -2,7 +2,18 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-First, run the development server:
+clone and install dependency
+
+```bash
+npm install
+```
+
+add env 
+```bash
+NEXT_PUBLIC_BASE_URL=http://94.74.86.174:8080/api
+```
+
+run the development server:
 
 ```bash
 npm run dev
